@@ -1,0 +1,72 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: dccfeee0-7593-41de-abc8-1c5b9cf725fe
+  title: AAEI Textbook
+  description: "AAEI Academy for Accountancy Excellence and Innovation Data Analytics Module Textbook"
+  keywords:
+    - aaei
+    - data analytics
+    - business analytics
+    - jupyter-book
+  github: subwaymatch/aaei-textbook
+  toc:
+    - file: content/index.md
+    - title: Tools Used in This Course
+      children:
+        - file: content/jupyter-notebooks.md
+        - file: content/git-and-github.md
+    - file: content/intro-to-analytics.md
+    - file: content/intro-to-python.md
+    - file: content/data-types-variables-operators-conditionals.md
+    - file: content/collections-and-loops.md
+    - file: content/strings.md
+    - file: content/functions.md
+    - file: content/intro-to-pandas.ipynb
+    - file: content/pandas-filtering-and-sorting.ipynb
+    - file: content/pandas-data-types-column-operations-missing-values.ipynb
+    - file: content/pandas-datetime-aggregation-merges.ipynb
+    - file: content/pandas-indexing-and-update-cells.ipynb
+    - file: content/pandas-string-methods.ipynb
+    - file: content/intro-to-sql.md
+    - file: content/basic-queries-in-sqlite.ipynb
+    - file: content/sql-aggregations.ipynb
+    - file: content/sql-joins.ipynb
+    - file: content/cloud-technlogies.md
+    - file: content/modern-techniques.md
+    - file: content/more-database-concepts.md
+    - file: content/intro-to-dataviz.ipynb
+    - file: content/more-plotly-visualizations.ipynb
+    - title: Assignments
+      children:
+        - file: content/assignments/exercise-01-python-basics.ipynb
+        - file: content/assignments/exercise-02-collections-loops-functions.ipynb
+        - file: content/assignments/exercise-03-functions.ipynb
+        - file: content/assignments/quiz-01-python-basics-prep.ipynb
+        - file: content/assignments/exercise-04-intro-to-pandas.ipynb
+        - file: content/assignments/exercise-05-pandas-filtering-sorting.ipynb
+        - file: content/assignments/quiz-02-python-applications-prep.ipynb
+        - file: content/assignments/problem-set-python-applications.ipynb
+        - file: content/assignments/exercise-06-pandas-working-with-columns-and-missing-values.ipynb
+        - file: content/assignments/quiz-03-vc-exit-prep.ipynb
+        - file: content/assignments/case-study-01-rideshare-vehicles.ipynb
+        - file: content/assignments/case-study-02-starbucks-app-customers.ipynb
+        - file: content/assignments/exercise-07-sql-quiz-prep.ipynb
+        - file: content/assignments/case-study-03-airbnb-listings-sql.ipynb
+        - file: content/assignments/exercise-08-intro-to-dataviz.ipynb
+        - file: content/assignments/exercise-09-line-scatter-bar-plots.ipynb
+        - file: content/assignments/case-study-04-rideshare-trips.ipynb
+  # title:
+  # description:
+  # keywords: []
+  # authors: []
+  # github:
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+
+site:
+  template: book-theme
+  options:
+    logo: site_images/site_logo.svg
+    logo_dark: site_images/site_logo.svg
+    favicon: site_images/favicon/favicon.ico
+    style: media/custom.css
