@@ -7,8 +7,8 @@ A string is a sequence of characters enclosed in either single quotes (`'`) or d
 You can create a string by enclosing characters in quotes. Both single and double quotes can be used interchangeably.
 
 ```python
-my_string = "Hello, World!"
-another_string = 'Python is fun!'
+account_name = "Accounts Payable"
+audit_opinion = 'Unqualified Opinion'
 ```
 
 :::{seealso} Triple Quotes for Multi-line Strings
@@ -16,10 +16,9 @@ another_string = 'Python is fun!'
 Python also supports triple quotes (`'''` or `"""`) for creating multi-line strings. This is useful for strings that span multiple lines or for including both single and double quotes within the string without needing to escape them.
 
 ```python
-multi_line_string = """Hello
-World
-Data
-Rocks!"""
+multi_line_string = """Journal Entry Memo:
+To record the purchase of office supplies
+on account from Supplies Inc."""
 ```
 
 :::
@@ -33,8 +32,8 @@ Rocks!"""
 You can concatenate (combine) strings using the `+` operator.
 
 ```python
-greeting = "Hello, " + "World!"
-print(greeting)  # Output: Hello, World!
+greeting = "Hello, " + "future CPAs!"
+print(greeting)  # Output: Hello, future CPAs!
 ```
 
 ### ✖️ Repetition
@@ -51,8 +50,8 @@ print(laugh)  # Output: HaHaHa
 You can find the length of a string using the `len()` function.
 
 ```python
-my_string = "BDI 475"
-print(len(my_string))  # Output: 7
+my_string = "ACCY"
+print(len(my_string))  # Output: 4
 ```
 
 ---
@@ -75,9 +74,9 @@ We'll explore a few of these methods with examples.
 These methods convert a string to lowercase or uppercase, respectively.
 
 ```python
-text = "Data Analytics"
-print(text.lower())  # Output: data analytics
-print(text.upper())  # Output: DATA ANALYTICS
+text = "Audit Evidence"
+print(text.lower())  # Output: audit evidence
+print(text.upper())  # Output: AUDIT EVIDENCE
 ```
 
 ### 🧹 `strip()`
@@ -85,15 +84,15 @@ print(text.upper())  # Output: DATA ANALYTICS
 This method removes any leading and trailing whitespace from a string.
 
 ```python
-text = "   I love data!   "
-print(text.strip())  # Output: "I love data!"
+account_from_excel = "   Cash   "
+print(account_from_excel.strip())  # Output: "Cash"
 ```
 
 ### ♻️ `replace()`
 
 ```python
-text = "I love data!"
-print(text.replace("data", "analytics"))  # Output: "I love analytics!"
+text = "Accounts Receivable"
+print(text.replace("Receivable", "Payable"))  # Output: "Accounts Payable"
 ```
 
 This method replaces occurrences of a specified substring with another substring.
@@ -108,20 +107,15 @@ words = text.split()
 print(words)  # Output: ['I', 'love', 'data', 'analytics']
 ```
 
-:::{tip} String Immutability
-Strings in Python are immutable, meaning that once a string is created, it cannot be changed. Any operation that modifies a string will create a new string instead of altering the original one.
-
-For example, using the `replace()` method does not change the original string but returns a new string with the modifications.
-:::
-
 ### 🔗 `join()`
 
 This method joins a list of strings into a single string, with a specified separator.
 
 ```python
-words = ['I', 'love', 'data', 'analytics']
-sentence = ' '.join(words)
-print(sentence)  # Output: "I love data analytics"
+accounts_list = ['Cash', 'Inventory', 'Equipment']
+# Join the list into a single string, separated by a pipe '|'
+joined_string = '|'.join(accounts_list)
+print(joined_string)  # Output: "Cash|Inventory|Equipment"
 ```
 
 ### 🔍 `find()`
@@ -129,9 +123,9 @@ print(sentence)  # Output: "I love data analytics"
 This method returns the lowest index of the substring if found in the string. If not found, it returns -1.
 
 ```python
-text = "I love data analytics"
-index = text.find("data")
-print(index)  # Output: 7
+text = "Cost of Goods Sold"
+index = text.find("Goods")
+print(index)  # Output: 10
 ```
 
 ---
@@ -141,29 +135,27 @@ print(index)  # Output: 7
 Although it is not a collection type like lists or dictionaries, strings can be treated as collections of characters, allowing you to iterate over them using loops.
 
 ```python
-my_string = "ILLINI"
+acronym = "FIFO" # First In, First Out
 
-for char in my_string:
-    print(char)
+for char in acronym:
+    print(char)
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
+F
 I
-L
-L
-I
-N
-I
+F
+O
 ```
 
 You can access individual characters in a string using indexing, similar to lists.
 
 ```python
-first_char = my_string[0]     # 'I'
-last_char = my_string[-1]     # 'I'
+first_char = acronym[0]   	# 'F'
+last_char = acronym[-1] 	# 'O'
 ```
 
 ### ✂️ Slicing a String

@@ -14,56 +14,61 @@ In programming, **functions** serve a similar purpose. They are reusable blocks 
 
 In Python, functions are defined using the `def` keyword, followed by the function name and parentheses.
 
-Here's a simple example of a function that prints a greeting message.
+Here's a simple example of a function that prints a report header.
 
 ```python
-def my_function():
-    print("Hello from my function!")
+def print_report_header():
+    print("--- Income Statement ---")
+    print("For the Year Ended December 31, 2025")
 ```
 
 To call the function and execute its code, you simply use the function name followed by parentheses.
 
 ```python
-my_function()
+print_report_header()
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-Hello from my function!
+--- Income Statement ---
+For the Year Ended December 31, 2025
 ```
 
-Functions can also take parameters, which are values that you can pass into the function to customize its behavior. Here's an example of a function that takes a parameter and uses it in the greeting message.
+Functions can also take parameters, which are values that you can pass into the function to customize its behavior. Here's an example of a function that takes a parameter and uses it to calculate sales tax.
 
 ```python
-def greet(name):
-    """This function greets the person passed in as a parameter."""
-    print(f"Hello, {name}!")
+def calculate_sales_tax(sales_amount):
+    """This function calculates sales tax at a fixed 8% rate."""
+    tax = sales_amount * 0.08
+    print(f"Sales: ${sales_amount}, Tax: ${tax}")
 ```
 
-In the example above, we defined a function named `greet` that takes one parameter, `name`. The function prints a greeting message using the provided name.
+In the example above, we defined a function named `calculate_sales_tax` that takes one parameter, `sales_amount`. The function calculates and prints the tax.
 
 ## ✨ Parameters and Arguments
 
 Functions can take multiple parameters, which are specified within the parentheses in the function definition. When calling the function, you provide arguments that correspond to these parameters.
 
 ```python
-def add_numbers(a, b):
-    return a + b
+def calculate_net_income(revenue, expenses):
+    return revenue - expenses
 
-result = add_numbers(5, 10)
-print(result)  # Output: 15
+# Call the function with arguments
+net_income = calculate_net_income(150000, 85000)
+print(f"Net Income: ${net_income}")  # Output: Net Income: $65000
 ```
 
-In this example, the `add_numbers` function takes two parameters, `a` and `b`, and returns their sum. When we call the function with the arguments `5` and `10`, it returns `15`.
+In this example, the `calculate_net_income` function takes two parameters, `revenue` and `expenses`, and returns their difference.
 
 :::{tip} What is the difference between parameters and arguments?
 
-- **Parameters** are the variables listed in the function definition. They act as placeholders for the values that will be passed to the function when it is called.
-- **Arguments** are the actual values that are passed to the function when it is called.
+- **Parameters** are the variables listed in the function definition (e.g., `revenue` and `expenses`). They act as placeholders for the values that will be passed to the function when it is called.
+- **Arguments** are the actual values that are passed to the function when it is called (e.g., `150000` and `85000`).
 
 They are used interchangeably in casual conversation, but technically, parameters refer to the function's definition, while arguments refer to the function's invocation.
+
 :::
 
 ## 🔄 Return Values
@@ -71,17 +76,20 @@ They are used interchangeably in casual conversation, but technically, parameter
 Functions can return values using the `return` statement. This allows you to capture the output of a function and use it elsewhere in your code.
 
 ```python
-def square(x):
-    return x * x
+def calculate_depreciation(cost, salvage_value, useful_life):
+    """Calculates annual straight-line depreciation."""
+    return (cost - salvage_value) / useful_life
 
-result = square(4)
-print(result)  # Output: 16
+annual_depreciation = calculate_depreciation(50000, 10000, 5)
+print(f"Annual Depreciation: ${annual_depreciation}")  # Output: Annual Depreciation: $8000.0
 ```
 
-In this example, the `square` function takes a number `x` as a parameter and returns its square. When we call the function with the argument `4`, it returns `16`, which we then print.
+In this example, the `calculate_depreciation` function takes three parameters and returns the calculated annual depreciation. We capture this returned value in the `annual_depreciation` variable.
 
 :::{tip} What happens if a function does not have a return statement?
+
 If a function does not have a `return` statement, it will return `None` by default. This means that if you try to capture the output of such a function, you will get `None`.
+
 :::
 
 :::{hint} What is a `None` value?
@@ -103,28 +111,29 @@ if some_variable is not None:
 
 :::
 
-If we modify the previous `square()` function to remove the `return` statement:
+If we modify a function to `print` instead of `return`:
 
 ```{code} python
 :label: no-return
 :caption: No Return Statement
 :linenos:
-:emphasize-lines: 2
-def square(x):
-    print(x * x) # Note: No return statement
+:emphasize-lines: 3
+def print_depreciation(cost, salvage_value, useful_life):
+    """Calculates and prints annual straight-line depreciation."""
+    print((cost - salvage_value) / useful_life) # Note: No return statement
 
-result = square(4)
-print(result)  # Output: None
+result = print_depreciation(50000, 10000, 5)
+print(result)
 ```
 
 Here's the output of the above code:
 
 ```
-16
+8000.0
 None
 ```
 
-The `16` is printed from within the `square` function, but since there is no `return` statement, the function returns `None`, which is then printed as the value of `result`.
+The `8000.0` is printed from _within_ the `print_depreciation` function, but since there is no `return` statement, the function returns `None`. The final `print(result)` line prints this `None` value.
 
 :::{tip} Can a function return multiple values?
 
@@ -134,12 +143,16 @@ Yes, a function can return multiple values by separating them with commas in the
 :label: multiple-returns
 :caption: Multiple Return Values
 :linenos:
-:emphasize-lines: 2
-def get_coordinates():
-    return 10, 20
+:emphasize-lines: 4-4
+def get_trial_balance_totals():
+    total_debits = 150000
+    total_credits = 150000
+    return total_debits, total_credits
 
-coordinates = get_coordinates()
-print(coordinates)  # Output: (10, 20)
+# You can "unpack" the returned tuple into multiple variables
+debits, credits = get_trial_balance_totals()
+
+print(f"Debits: {debits}, Credits: {credits}")  # Output: Debits: 150000, Credits: 150000
 ```
 
 :::
@@ -149,24 +162,29 @@ print(coordinates)  # Output: (10, 20)
 Here are a few more examples of functions in Python:
 
 ```python
-def multiply(a, b):
-    return a * b
-result = multiply(3, 4)
-print(result)  # Output: 12
+def calculate_current_ratio(current_assets, current_liabilities):
+    return current_assets / current_liabilities
+
+ratio = calculate_current_ratio(100000, 50000)
+print(f"Current Ratio: {ratio}")  # Output: Current Ratio: 2.0
 ```
 
 ```python
-def is_even(number):
-    return number % 2 == 0
-print(is_even(4))  # Output: True
-print(is_even(5))  # Output: False
+def is_material(misstatement, materiality_threshold):
+    """Checks if a misstatement is material."""
+    return misstatement > materiality_threshold
+
+print(is_material(5000, 10000))  # Output: False
+print(is_material(12000, 10000)) # Output: True
 ```
 
 ```python
-def is_absolute_equal(a, b):
-    return abs(a) == abs(b)
-print(is_absolute_equal(-5, 5))  # Output: True
-print(is_absolute_equal(-5, 4))  # Output: False
+def do_debits_equal_credits(total_debits, total_credits):
+    """Checks if a trial balance is in balance."""
+    return total_debits == total_credits
+
+print(do_debits_equal_credits(150000, 150000))  # Output: True
+print(do_debits_equal_credits(150000, 149000))  # Output: False
 ```
 
 ## 🛠️ Built-in Functions
@@ -201,7 +219,8 @@ In Python, an object is an instance of a class. Everything in Python is an objec
 
 This may sound confusing at first, but think of an object as a collection of data (attributes) and behaviors (methods) that are bundled together.
 
-For example, consider a `Car` class. An object of this class could represent a specific car, with attributes like `make`, `model`, and `year`, and methods like `start()` and `stop()`. Each car object can have its own unique values for these attributes and can perform the behaviors defined by the methods.
+For example, consider a `FixedAsset` class. An object of this class could represent a specific asset, with attributes like `cost`, `salvage_value`, and `useful_life`, and methods like `calculate_depreciation()` and `get_book_value()`. :::
+
 :::
 
 Here's an example to illustrate the difference between functions and methods:
@@ -212,43 +231,49 @@ Here's an example to illustrate the difference between functions and methods:
 :linenos:
 :emphasize-lines: 2-3
 # Function
-def greet(name):
-    return f"Hello, {name}!"
+def format_currency(amount):
+    return f"${amount:,.2f}" # Formats a number as U.S. currency
 
 # Using the function
-print(greet("Kingfisher"))  # Output: Hello, Kingfisher!
+print(format_currency(150000))  # Output: $150,000.00
 ```
 
-In @function-example, `greet()` is a standalone function that takes a parameter `name` and returns a greeting message.
+In @function-example, `format_currency()` is a standalone function that takes an amount and returns a formatted string.
 
 ```{code} python
 :label: method-example
 :caption: Method Example
 :linenos:
-:emphasize-lines: 2-7
+:emphasize-lines: 2-12
 
 # Method
-class Person:
-    def __init__(self, name):
-        self.name = name
+class FixedAsset:
+    def __init__(self, name, cost, useful_life):
+        self.name = name
+        self.cost = cost
+        self.useful_life = useful_life
+        self.age = 0 # Initial age is 0
 
-    def greet(self):
-        return f"Hello, {self.name}!"
+    def calculate_book_value(self):
+        # (Simplified straight-line, no salvage)
+        depreciation = (self.cost / self.useful_life) * self.age
+        return self.cost - depreciation
 
 # Using the method
-person = Person("Kingfisher")
-print(person.greet())  # Output: Hello, Kingfisher!
+asset = FixedAsset("Delivery Van", 50000, 5)
+asset.age = 2 # The asset is now 2 years old
+print(asset.calculate_book_value())  # Output: 30000.0
 ```
 
-In @method-example, `greet()` is a method defined within the `Person` class. It operates on an instance of the class and uses the instance's `name` attribute to return a greeting message.
+In @method-example, `calculate_book_value()` is a method defined within the `FixedAsset` class. It operates on an instance of the class (an object) and uses the object's `cost`, `useful_life`, and `age` attributes to return its current book value.
 
 ## 🌟 Why are Functions Important?
 
 When you start writing more complex programs, you'll find that functions become essential for organizing your code and making it more manageable. Here are some reasons why functions are important:
 
-1. **Code Reusability**: Functions allow you to write a piece of code once and reuse it multiple times throughout your program. This reduces redundancy and makes your code more efficient.
-2. **Modularity**: Functions help break down complex problems into smaller, manageable pieces. Each function can focus on a specific task, making it easier to understand and maintain the code.
-3. **Readability**: Functions improve the readability of your code by providing meaningful names for specific tasks. This makes it easier for others (and yourself) to understand what the code does.
-4. **Maintainability**: If you need to change the behavior of a specific task, you only need to modify the function in one place, rather than changing the same code in multiple locations.
-5. **Testing and Debugging**: Functions can be tested independently, making it easier to identify and fix bugs in your code.
-6. **Abstraction**: Functions allow you to abstract away complex logic, enabling you to focus on higher-level concepts without getting bogged down in implementation details.
+1.  **Code Reusability**: Functions allow you to write a piece of code once and reuse it multiple times. (e.g., you can call `calculate_depreciation()` for thousands of different assets).
+2.  **Modularity**: Functions help break down complex problems into smaller, manageable pieces. Each function can focus on a specific task (e.g., one function calculates depreciation, another checks for materiality).
+3.  **Readability**: Functions improve the readability of your code by providing meaningful names for specific tasks. This makes it easier for others (and yourself) to understand what the code does.
+4.  **Maintainability**: If you need to change the behavior of a specific task (e.g., change from straight-line to double-declining depreciation), you only need to modify the function in one place.
+5.  **Testing and Debugging**: Functions can be tested independently, making it easier to identify and fix bugs in your code.
+6.  **Abstraction**: Functions allow you to abstract away complex logic, enabling you to focus on higher-level concepts (e.g., you can just _use_ `calculate_book_value()` without needing to remember the exact formula inside it).
