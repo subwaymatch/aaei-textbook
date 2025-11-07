@@ -19,17 +19,18 @@ Lists are a fundamental data structure in Python, allowing you to store multiple
 You can create a list by placing items inside square brackets `[]`, separated by commas. Lists can contain items of different data types, including numbers, strings, and even other lists.
 
 ```python
-# Creating a list of integers
-numbers = [1, 2, 3, 4, 5]
+# Creating a list of integers (e.g., inventory counts)
+inventory_counts = [150, 220, 85, 300, 190]
 
-# Creating a list of strings
-fruits = ["apple", "banana", "cherry"]
+# Creating a list of strings (e.g., auditing standards)
+auditing_standards = ["AU-C 200", "AU-C 315", "AU-C 500", "AU-C 700"]
 
-# Creating a mixed list
-mixed = [1, "hello", 3.14, True]
+# Creating a mixed list (e.g., an asset's properties)
+# [Asset ID, Description, Cost, Is-Tangible]
+asset_info = [101, "Delivery Van", 45000, True]
 
-# Creating a nested list
-nested = [[1, 2], [3, 4], [5, 6]]
+# Creating a nested list (e.g., simple journal entries [Debit, Credit])
+journal_entries = [["Cash", "Common Stock"], ["Inventory", "Accounts Payable"], ["COGS", "Inventory"]]
 ```
 
 You can check the type of a list using the `type()` function:
@@ -44,16 +45,16 @@ print(type([1, 2, 3]))  # Output: <class 'list'>
 
 ```python
 # Accessing elements by index
-first_number = numbers[0]   # 1
-second_fruit = fruits[1]    # "banana"
-third_item = mixed[2]       # 3.14
-first_sublist = nested[0]   # [1, 2]
+first_count = inventory_counts[0]       # 150
+second_standard = auditing_standards[1] # "AU-C 315"
+asset_cost = asset_info[2]              # 45000
+first_entry = journal_entries[0]        # ["Cash", "Common Stock"]
 
 # Accessing the last element
-last_fruit = fruits[-1]     # "cherry"
+last_standard = auditing_standards[-1]  # "AU-C 700"
 
 # Slicing a list
-sublist = numbers[1:4]      # [2, 3, 4]
+subset_counts = inventory_counts[1:4]   # [220, 85, 300]
 ```
 
 ---
@@ -61,10 +62,17 @@ sublist = numbers[1:4]      # [2, 3, 4]
 #### ✏️ Modifying Lists
 
 ```python
-numbers[0] = 10         # numbers is now [10, 2, 3, 4, 5]
-fruits.append("date")   # fruits is now ["apple", "banana", "cherry", "date"]
-mixed.remove(3.14)      # mixed is now [1, "hello", True]
-nested[1][0] = 30       # nested is now [[1, 2], [30, 4], [5, 6]]
+inventory_counts[0] = 160
+# inventory_counts is now [160, 220, 85, 300, 190]
+
+auditing_standards.append("AU-C 240")
+# Adds "AU-C 240" (Fraud) to the end
+
+asset_info.remove(45000)
+# asset_info is now [101, "Delivery Van", True]
+
+journal_entries[1][0] = "Equipment"
+# journal_entries is now [["Cash", "Common Stock"], ["Equipment", "Accounts Payable"], ["COGS", "Inventory"]]
 ```
 
 ---
@@ -87,8 +95,8 @@ Note that the starting index is inclusive, while the ending index is exclusive.
 You can find out how many items are in a list using the `len()` function.
 
 ```python
-fruits = ["apple", "banana", "cherry"]
-length = len(fruits)  # 3
+auditing_standards = ["AU-C 200", "AU-C 315", "AU-C 500", "AU-C 700"]
+standard_count = len(auditing_standards)  # 4
 ```
 
 ---
@@ -98,30 +106,30 @@ length = len(fruits)  # 3
 Tuples are similar to lists, but they are immutable, meaning their elements cannot be changed after creation. Tuples are defined using parentheses `()`.
 
 ```python
-# Creating a tuple
-coordinates = (10, 20)
+# Creating a tuple (e.g., a journal entry pair: debit, credit)
+journal_pair = ("Cash", "Revenue")
 
-x = coordinates[0]
-y = coordinates[1]
+debit_account = journal_pair[0]
+credit_account = journal_pair[1]
 
-print(f"x: {x}, y: {y}")
+print(f"Debit: {debit_account}, Credit: {credit_account}")
 ```
 
 The output of the above code will be:
 
 ```
-x: 10, y: 20
+Debit: Cash, Credit: Revenue
 ```
 
 You can check the type of a tuple using the `type()` function:
 
 ```python
-print(type((1, 2, 3)))  # Output: <class 'tuple'>
+print(type(("Cash", "Revenue")))  # Output: <class 'tuple'>
 ```
 
-Tuples are often used to represent fixed collections of items, such as coordinates or RGB color values.
+Tuples are often used to represent fixed collections of items, such as account pairings, coordinates, or RGB color values.
 
-In this course, we will primarily use lists, but it's important to be aware of tuples as they are commonly used in Python programming.
+Although you may not use tuples frequently, it's important to be aware of them as they are commonly used in Python programming.
 
 ---
 
@@ -136,46 +144,48 @@ Loops are used to execute a block of code repeatedly. In Python, there are two m
 You can use `for` loops to iterate over the elements of a list. This allows you to perform operations on each item in the list.
 
 ```python
-fruits = ["apple", "banana", "cherry"]
+auditing_standards = ["AU-C 200", "AU-C 315", "AU-C 500", "AU-C 700"]
 
-for fruit in fruits:
-    print(fruit)
-
+for standard in auditing_standards:
+    print(standard)
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-apple
-banana
-cherry
+AU-C 200
+AU-C 315
+AU-C 500
+AU-C 700
 ```
 
 You can also use loops to perform operations on each element in a list. For example, you can multiply each number in a list by 2.
 
 ```python
-numbers = [1, 2, 3, 4, 5]
+asset_costs = [50000, 75000, 30000]
+useful_life = 5 # Assume 5-year straight-line, no salvage
 
-for i in numbers:
-    print(i * 2)
+for cost in asset_costs:
+    # Calculate annual straight-line depreciation
+    print(cost / useful_life)
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-2
-4
-6
-8
-10
+10000.0
+15000.0
+6000.0
 ```
 
-:::{tip} What is `i` in the loop?
-The `i` variable in the `for` loop acts as a loop counter that takes on each value in the sequence generated by `range(5)`, which are the numbers 0 through 4. You can name this variable anything you like; it's just a placeholder for the current value in the iteration.
+:::{tip} What is `cost` in the loop?
 
-`i` is commonly used as a convention, but you could use other names like `index`, `num`, or `item` depending on the context of your loop. The name of the variable does not affect the functionality of the loop; it simply represents the current item in the iteration. It is a temporary variable that exists only within the scope of the loop.
+The `cost` variable in the `for` loop acts as a loop counter that takes on each value in the sequence generated by `range(5)`, which are the numbers 0 through 4. You can name this variable anything you like; it's just a placeholder for the current value in the iteration.
+
+`cost` is commonly used as a convention, but you could use other names like `index`, `num`, or `item` depending on the context of your loop. The name of the variable does not affect the functionality of the loop; it simply represents the current item in the iteration. It is a temporary variable that exists only within the scope of the loop.
+
 :::
 
 #### 🛞 For Loop Examples
@@ -186,31 +196,30 @@ The `i` variable in the `for` loop acts as a loop counter that takes on each val
 
 ```{code} python
 :label: count-items-in-a-list
-:caption: Counting Items in a List
+:caption: Counting Audit Opinions in a List
 :linenos:
-:emphasize-lines: 12-14
+:emphasize-lines: 10-12
 
-fruits = ["Apple", "Banana", "Mango", "Orange",
-          "Apple", "Grapes", "Mango", "Apple",
-          "Banana", "Apple", "Orange", "Apple",
-          "Mango", "Peach", "Apple", "Apple",
-          "Banana", "Apple", "Apple", "Mango",
-          "Orange", "Apple", "Apple", "Banana",
-          "Apple", "Apple", "Grapes", "Apple",
-          "Peach", "Apple"]
-num_apple = 0
+# A list of audit opinions from various engagements
+audit_opinions = ["Unqualified", "Qualified", "Unqualified", "Adverse",
+nbsp;         "Unqualified", "Disclaimer", "Qualified", "Unqualified",
+nbsp;         "Unqualified", "Unqualified", "Qualified", "Unqualified",
+nbsp;         "Adverse", "Unqualified", "Unqualified", "Unqualified"]
 
-# Counting the number of "Apple" in the list
-for fruit in fruits:
-    if fruit == "Apple":
-        num_apple += 1
+num_unqualified = 0
 
-print(f"You have {num_apple} apples.") # Output: You have 15 apples.
+# Counting the number of "Unqualified" opinions in the list
+for opinion in audit_opinions:
+    if opinion == "Unqualified":
+        num_unqualified += 1
+
+print(f"You have {num_unqualified} unqualified opinions.")
+# Output: You have 10 unqualified opinions.
 ```
 
-In @count-items-in-a-list code above, we iterate through the list of fruits and increment the `num_apple` counter each time we encounter "Apple". Finally, we print the total count of apples.
+In @count-items-in-a-list code above, we iterate through the list of audit opinions and increment the `num_unqualified` counter each time we encounter "Unqualified". Finally, we print the total count.
 
-The `+=` operator is a shorthand for incrementing a variable by a certain value. For example, `num_apple += 1` is equivalent to `num_apple = num_apple + 1`. Each time we find "Apple" in the list, we increase the count by 1 using this shorthand increment operator.
+The `+=` operator is a shorthand for incrementing a variable by a certain value. For example, `num_unqualified += 1` is equivalent to `num_unqualified = num_unqualified + 1`. Each time we find "Unqualified" in the list, we increase the count by 1 using this shorthand increment operator.
 
 ---
 
@@ -218,84 +227,48 @@ The `+=` operator is a shorthand for incrementing a variable by a certain value.
 
 ```{code} python
 :label: sum-values-in-a-list
-:caption: Summing Values in a List
+:caption: Summing Inventory Costs in a List
 :linenos:
-:emphasize-lines: 5-6
+:emphasize-lines: 6-7
 
-hours_worked = [8, 7, 9, 6, 8]
-total_hours = 0
+# Costs of different batches of inventory
+inventory_costs = [1200, 1500, 800, 1350, 900]
+total_inventory_cost = 0
 
 # YOUR CODE BEGINS
-for v in hours_worked:
-    total_hours += v
+for cost in inventory_costs:
+    total_inventory_cost += cost
 # YOUR CODE ENDS
 
-print(f"Total hours worked: {total_hours}") # Output: Total hours worked: 38
+print(f"Total inventory cost: ${total_inventory_cost}")
+# Output: Total inventory cost: $5750
 ```
 
-In the @sum-values-in-a-list code above, we iterate through the list of hours worked and add each value to the `total_hours` variable. Finally, we print the total hours worked.
+In the @sum-values-in-a-list code above, we iterate through the list of inventory costs and add each value to the `total_inventory_cost` variable. Finally, we print the total inventory cost.
 
 ---
 
-**🎯 Example: Summing Odd Numbers**
+**🎯 Example: Summing Negative Transactions**
 
 ```{code} python
-:label: sum-odd-numbers-in-a-list
-:caption: Summing Odd Numbers in a List
+:label: sum-negative-transactions-in-a-list
+:caption: Summing Negative Transactions (e.g., Withdrawals) in a List
 :linenos:
 :emphasize-lines: 5-7
 
-nums = [1, 2, 3, 4, 5, 6, 7, 8]
-odd_sum = 0
+transactions = [1500, -500, 200, -80, -220, 100]
+total_withdrawals = 0
 
 # YOUR CODE BEGINS
-for num in nums:
-    if num % 2 != 0:
-        odd_sum += num
+for tx in transactions:
+    if tx < 0:
+        total_withdrawals += tx
 # YOUR CODE ENDS
 
-print(f"Sum of odd numbers: {odd_sum}") # Output: Sum of odd numbers: 16
+print(f"Sum of negative transactions: {total_withdrawals}") # Output: Sum of negative transactions: -800
 ```
 
-In the @sum-odd-numbers-in-a-list code above, we iterate through the list of numbers and check if each number is odd. If it is, we add it to the `odd_sum` variable. Finally, we print the total sum of odd numbers.
-
----
-
-**🎯 Example: Average of Even Numbers and Odd Numbers**
-
-```{code} python
-:label: average-of-even-and-odd-numbers-in-a-list
-:caption: Calculate Average of Even Numbers and Odd Numbers in a List
-:linenos:
-:emphasize-lines: 3-17
-
-nums = [15, 8, 7, 5, 15, 72, -20, -66, 9, -4, -11, 21, 19]
-
-even_sum = 0
-even_count = 0
-odd_sum = 0
-odd_count = 0
-
-for n in nums:
-    if n % 2 == 0:
-        even_sum += n
-        even_count += 1
-    else:
-        odd_sum += n
-        odd_count += 1
-
-even_avg = even_sum / even_count
-odd_avg = odd_sum / odd_count
-
-print(f'Average of even numbers is {even_avg}')
-print(f'Average of odd numbers is {odd_avg}')
-
-# Output:
-# Average of even numbers is -2.0
-# Average of odd numbers is 10.0
-```
-
-In the @average-of-even-and-odd-numbers-in-a-list code above, we iterate through the list of numbers and separate them into even and odd categories. We maintain separate sums and counts for both even and odd numbers. After the loop, we calculate the average for each category by dividing the sum by the count. Finally, we print the averages of even and odd numbers.
+In the @sum-negative-transactions-in-a-list code above, we iterate through the list of transactions and check if each number is negative (less than 0). If it is, we add it to the `total_withdrawals` variable. Finally, we print the total sum of negative transactions.
 
 ---
 
@@ -328,18 +301,19 @@ Here's the output of the above code:
 We can use the `range()` function to dynamically generate indices for accessing elements in a list.
 
 ```python
-majors = ["Accounting", "Finance", "Marketing"]
+tax_forms = ["Form 1040", "Form 1120", "Form 1065", "Form 941"]
 
-for i in range(len(majors)):
-    print(majors[i])
+for i in range(len(tax_forms)):
+    print(f"Index {i}: {tax_forms[i]}")
 
 # Output:
-# Accounting
-# Finance
-# Marketing
+# Index 0: Form 1040
+# Index 1: Form 1120
+# Index 2: Form 1065
+# Index 3: Form 941
 ```
 
-This code iterates through the indices of the `majors` list and prints each major by accessing it using its index. Note that `len(majors)` returns the length of the list, which is 3 in this case, so `range(len(majors))` generates the sequence 0, 1, 2. This code will work for lists of any length, because it dynamically calculates the length of the list.
+This code iterates through the indices of the `tax_forms` list and prints each form by accessing it using its index. Note that `len(tax_forms)` returns the length of the list, which is 4 in this case, so `range(len(tax_forms))` generates the sequence 0, 1, 2, 3.
 
 :::{tip} Why use `range(len(...))`?
 
@@ -348,15 +322,15 @@ The two code snippets below achieve the same result, but they do so in different
 **🖥️ Snippet 1 - Use a direct iteration over the list**
 
 ```python
-for major in majors:
-    print(major)
+for form in tax_forms:
+    print(form)
 ```
 
 **🖥️ Snippet 2 - Use `range(len(...))` to get indices**
 
 ```python
-for i in range(len(majors)):
-    print(majors[i])
+for i in range(len(tax_forms)):
+    print(tax_forms[i])
 ```
 
 The first snippet is more Pythonic and easier to read, as it directly iterates over the elements of the list. The second snippet, however, is useful when you need to access the index of each element, for example, if you want to print the index alongside the element or if you need to modify elements in place.
@@ -369,35 +343,37 @@ Another reason to use `range(len(...))` is when you need to iterate over multipl
 
 **🎯 Example: Comparing Two Lists Using Positional Indices**
 
-Imagine you run a small contest where people predict the winners of upcoming games.
+Imagine you are performing an Accounts Receivable confirmation audit.
 
-You are given two lists: `predicted_winners` and `actual_winners`. Each list contains the predicted and actual winners of a series of games, respectively.
+You are given two lists: `client_balances` and `customer_confirmations`. Each list contains the A/R balance for a customer as recorded by the client and as confirmed by the customer, respectively.
 
-Your task is to compare their values **at each index** using a `for` loop, and count the number of predictions that were correct. A prediction is considered correct if the value at a given index in the `predicted_winners` list matches the value at the same index in the `actual_winners` list. Store the count of correct predictions in a variable called `num_correct`.
+Your task is to compare their values **at each index** using a `for` loop, and count the number of balances that match. A balance is considered matching if the value at a given index in the `client_balances` list matches the value at the same index in the `customer_confirmations` list. Store the count of matching balances in a variable called `num_matching`.
+
+You can assume that both lists have the same length.
 
 You can assume that both lists have the same length (i.e., the same number of elements).
 
 ```{code} python
 :label: compare-two-lists
-:caption: Comparing Two Lists Using Positional Indices
+:caption: Comparing A/R Balances Using Positional Indices
 :linenos:
 :emphasize-lines: 4-7
 
-predicted_winners = ["Illinois", "Purdue", "Rutgers", "Washington"]
-actual_winners = ["Illinois", "Indiana", "Maryland", "Washington"]
+client_balances = [1500, 2200, 800, 5000, 1100]
+customer_confirmations = [1500, 2200, 750, 5000, 1100] # Note the discrepancy at index 2
 
-num_correct = 0
-for i in range(len(predicted_winners)):
-    if predicted_winners[i] == actual_winners[i]:
-        num_correct += 1
+num_matching = 0
+for i in range(len(client_balances)):
+    if client_balances[i] == customer_confirmations[i]:
+        num_matching += 1
 
-print(f"Number of correct predictions: {num_correct}")
-# Output: Number of correct predictions: 2
+print(f"Number of matching balances: {num_matching}")
+# Output: Number of matching balances: 4
 ```
 
-In @compare-two-lists code above, we iterate through the lists using their indices and compare the values at each index. If the values match, we increment the `num_correct` counter. Finally, we print the total number of correct predictions.
+In @compare-two-lists code above, we iterate through the lists using their indices and compare the values at each index. If the values match, we increment the `num_matching` counter. Finally, we print the total number of matching balances.
 
-The `+=` operator is a shorthand for incrementing a variable by a certain value. For example, `num_correct += 1` is equivalent to `num_correct = num_correct + 1`. Each time we find a correct prediction, we increase the count by 1 using this shorthand increment operator.
+The `+=` operator is a shorthand for incrementing a variable by a certain value. For example, `num_matching += 1` is equivalent to `num_matching = num_matching + 1`.
 
 ---
 
@@ -406,51 +382,65 @@ The `+=` operator is a shorthand for incrementing a variable by a certain value.
 You can also use nested loops, which are loops inside other loops. This is useful for working with multi-dimensional lists.
 
 ```python
-nested = [[1, 2], [3, 4], [5, 6]]
+journal_entries = [["Cash", "Common Stock"], ["Inventory", "Accounts Payable"], ["COGS", "Inventory"]]
 
-for sublist in nested:
-    for item in sublist:
-        print(item)
+for entry in journal_entries:
+    print(f"Entry: {entry}")
+    for account in entry:
+        print(f" -- Account: {account}")
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-1
-2
-3
-4
-5
-6
+Entry: ['Cash', 'Common Stock']
+ -- Account: Cash
+ -- Account: Common Stock
+Entry: ['Inventory', 'Accounts Payable']
+ -- Account: Inventory
+ -- Account: Accounts Payable
+Entry: ['COGS', 'Inventory']
+ -- Account: COGS
+ -- Account: Inventory
 ```
 
 ---
 
 ### 🔄 While Loops
 
-A `while` loop continues to execute as long as a specified condition is `True`. Be careful to ensure that the condition will eventually become `False`, or you may create an infinite loop.
+A `while` loop continues to execute as long as a specified condition is `True`. This is useful for scenarios like calculating depreciation until an asset's book value reaches its salvage value.
 
 ```python
-count = 0
-while count < 5:
-    print(count)
-    count += 1  # Increment count to avoid infinite loop
+book_value = 50000 # Initial Cost
+annual_depreciation = 8000
+salvage_value = 10000
+year = 0
+
+while book_value > salvage_value:
+    year += 1
+    book_value -= annual_depreciation # Reduce book value by depreciation
+    print(f"End of Year {year}: Book Value is {book_value}")
+
+print(f"Asset fully depreciated to salvage value in {year} years.")
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-0
-1
-2
-3
-4
+End of Year 1: Book Value is 42000
+End of Year 2: Book Value is 34000
+End of Year 3: Book Value is 26000
+End of Year 4: Book Value is 18000
+End of Year 5: Book Value is 10000
+Asset fully depreciated to salvage value in 5 years.
 ```
 
 :::{caution} Infinite Loops
-An infinite loop occurs when the loop's condition never becomes `False`. This can cause your program to run indefinitely, which may lead to crashes or unresponsiveness. Always ensure that the loop's condition will eventually be met by modifying variables within the loop.
+
+An infinite loop occurs when the loop's condition never becomes `False`. This can cause your program to run indefinitely. In the example above, if we forgot the line `book_value -= annual_depreciation`, the `book_value` would always be 50000, the condition `book_value > salvage_value` would always be true, and the loop would never end.
+
 :::
 
 ---
@@ -460,7 +450,9 @@ An infinite loop occurs when the loop's condition never becomes `False`. This ca
 Dictionaries are another important collection type in Python. They store data in key-value pairs, allowing you to quickly retrieve values based on their associated keys.
 
 :::{tip} Why are they called dictionaries?
-Dictionaries are named after real-world dictionaries, where you look up a word (the key) to find its definition (the value). Similarly, in a Python dictionary, you use a key to access its corresponding value.
+
+Dictionaries are named after real-world dictionaries, where you look up a word (the key) to find its definition (the value). Similarly, in a Python dictionary, you use a key (like "Cost" or "Salvage Value") to access its corresponding value.
+
 :::
 
 ---
@@ -472,10 +464,12 @@ Dictionaries are named after real-world dictionaries, where you look up a word (
 You can create a dictionary by placing key-value pairs inside curly braces `{}`, separated by commas. Each key is separated from its value by a colon `:`.
 
 ```python
-person = {
-    "name": "John",
-    "age": 30,
-    "city": "Champaign"
+# A dictionary representing a fixed asset
+fixed_asset = {
+    "name": "Delivery Van",
+    "cost": 30000,
+    "salvage_value": 5000,
+    "useful_life_years": 5
 }
 ```
 
@@ -490,13 +484,13 @@ print(type({"key": "value"}))  # Output: <class 'dict'>
 To access a value in a dictionary, you use its key inside square brackets `[]`.
 
 ```python
-name = person["name"]  # "John"
-age = person["age"]    # 30
-city = person["city"]  # "Champaign"
+name = fixed_asset["name"]              # "Delivery Van"
+cost = fixed_asset["cost"]              # 30000
+life = fixed_asset["useful_life_years"] # 5
 
-print(name) # Output: John
-print(age)  # Output: 30
-print(city) # Output: Champaign
+print(name) # Output: Delivery Van
+print(cost) # Output: 30000
+print(life) # Output: 5
 ```
 
 #### ✏️ Modifying Dictionaries
@@ -504,8 +498,11 @@ print(city) # Output: Champaign
 You can add new key-value pairs or update existing ones by assigning a value to a key.
 
 ```python
-person["email"] = "john@example.com"  # Add new key-value pair
-person["age"] = 31                    # Update existing value
+# Add new key-value pair
+fixed_asset["acquisition_date"] = "2025-01-15"
+
+# Update existing value
+fixed_asset["cost"] = 31000
 ```
 
 ---
@@ -515,15 +512,18 @@ person["age"] = 31                    # Update existing value
 Dictionaries can also contain other dictionaries, allowing you to create complex data structures.
 
 ```python
-people = {
-    "person1": {
-        "name": "John",
-        "age": 30
-    },
-    "person2": {
-        "name": "Jane",
-        "age": 25
-    }
+# A dictionary of tax clients
+tax_clients = {
+    "client_101": {
+        "name": "ABC Corp",
+        "entity_type": "C-Corp",
+        "fiscal_year_end": "12-31"
+    },
+    "client_102": {
+        "name": "Smith LLC",
+        "entity_type": "S-Corp",
+        "fiscal_year_end": "12-31"
+    }
 }
 ```
 
@@ -534,17 +534,17 @@ people = {
 You can use a `for` loop to iterate over the keys in a dictionary. You can then use these keys to access the corresponding values.
 
 ```python
-for person_key in people:
-    person = people[person_key]
-    print(f"{person['name']} is {person['age']} years old.")
+for client_id in tax_clients:
+    client_data = tax_clients[client_id]
+    print(f"Client {client_id}: {client_data['name']} is a {client_data['entity_type']}.")
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-John is 30 years old.
-Jane is 25 years old.
+ABC Corp (client_101) is a C-Corp.
+Smith LLC (client_102) is a S-Corp.
 ```
 
 You can also loop through both keys and values using the `.items()` method.
@@ -566,107 +566,116 @@ person2: Jane is 25 years old.
 
 ## 🥣 Mixing Collections and Loops
 
-You can combine lists and dictionaries to create more complex data structures. For example, you can have a list of dictionaries, where each dictionary represents a person.
+The real power comes from combining lists and dictionaries.
+
+You can have a **list of dictionaries**. This is perfect for representing a trial balance or a list of customers.
 
 ```python
-people = [
-    {
-        "name": "John",
-        "age": 30
-    },
-    {
-        "name": "Jane",
-        "age": 25
-    }
+# A list of Accounts Receivable
+accounts_receivable = [
+    {
+        "customer_id": "C-001",
+        "name": "Alpha Inc.",
+        "balance": 15000
+    },
+    {
+        "customer_id": "C-002",
+        "name": "Bravo Co.",
+        "balance": 8500
+    }
 ]
 
-for person in people:
-    print(f"{person['name']} is {person['age']} years old.")
+for customer in accounts_receivable:
+    print(f"{customer['name']} (ID: {customer['customer_id']}) owes ${customer['balance']}.")
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-John is 30 years old.
-Jane is 25 years old.
+Alpha Inc. (ID: C-001) owes $15000.
+Bravo Co. (ID: C-002) owes $8500.
 ```
 
 You can also have a dictionary of lists, where each key represents a category and the value is a list of items in that category.
 
 ```python
-fruits = {
-    "citrus": ["orange", "lemon", "lime"],
-    "berries": ["strawberry", "blueberry", "raspberry"]
+# A simplified Chart of Accounts
+chart_of_accounts = {
+    "Assets": ["Cash", "Accounts Receivable", "Inventory"],
+    "Liabilities": ["Accounts Payable", "Notes Payable"],
+    "Equity": ["Common Stock", "Retained Earnings"]
 }
 
-for category, fruit_list in fruits.items():
-    print(f"{category.capitalize()}:")
-    for fruit in fruit_list:
-        print(f" - {fruit}")
+for category, acct_list in chart_of_accounts.items():
+    print(f"{category.upper()}:")
+    for account in acct_list:
+        print(f" - {account}")
 ```
 
 Here's the output of the above code:
 
 ```
 # Output:
-Citrus:
- - orange
- - lemon
- - lime
-Berries:
- - strawberry
- - blueberry
- - raspberry
+ASSETS:
+ - Cash
+ - Accounts Receivable
+ - Inventory
+LIABILITIES:
+ - Accounts Payable
+ - Notes Payable
+EQUITY:
+ - Common Stock
+ - Retained Earnings
 ```
 
 ---
 
-**🎯 Example: Calculating Total Salary of Engineering Employees**
+**🎯 Example: Calculating Total Current Assets**
 
 ```{code} python
-:label: total-salary-of-engineering-employees-in-a-list-of-dictionaries
-:caption: Calculate Total Salary of Engineering Employees
+:label: total-current-assets-in-a-list-of-dictionaries
+:caption: Calculate Total Current Assets from a list of accounts
 :linenos:
 :emphasize-lines: 29-33
 
-employees = [
-    {
-        "name": "Alice",
-        "department": "Engineering",
-        "salary": 95000
-    },
-    {
-        "name": "Bob",
-        "department": "Marketing",
-        "salary": 72000
-    },
-    {
-        "name": "Charlie",
-        "department": "Engineering",
-        "salary": 105000
-    },
-    {
-        "name": "Diana",
-        "department": "HR",
-        "salary": 68000
-    },
-    {
-        "name": "Ethan",
-        "department": "Engineering",
-        "salary": 99000
-    }
+balance_sheet_accounts = [
+    {
+        "name": "Cash",
+        "category": "Current Asset",
+        "balance": 50000
+    },
+    {
+        "name": "Accounts Receivable",
+        "category": "Current Asset",
+        "balance": 120000
+    },
+    {
+        "name": "Building",
+        "category": "Long-Term Asset",
+        "balance": 800000
+    },
+    {
+      _ "name": "Inventory",
+        "category": "Current Asset",
+        "balance": 75000
+    },
+    {
+        "name": "Accounts Payable",
+        "category": "Current Liability",
+        "balance": 60000
+    }
 ]
 
-engineering_total_salary = 0
+total_current_assets = 0
 
-for e in employees:
-    if e["department"] == "Engineering":
-        engineering_total_salary += e["salary"]
+for acct in balance_sheet_accounts:
+    if acct["category"] == "Current Asset":
+        total_current_assets += acct["balance"]
 
-print(f"Engineering employees' total salary is {engineering_total_salary}!") # Output: Engineering employees' total salary is 299000!
+print(f"Total current assets: ${total_current_assets}") # Output: Total current assets: $245000
 ```
 
-In the @total-salary-of-engineering-employees-in-a-list-of-dictionaries code above, we iterate through the list of employees and check if each employee belongs to the "Engineering" department. If they do, we add their salary to the `engineering_total_salary` variable. Finally, we print the total salary of all engineering employees.
+In the @total-current-assets-in-a-list-of-dictionaries code above, we iterate through the list of accounts. Each account is a dictionary.
 
-The `if` statement inside the loop allows us to filter the employees based on their department, ensuring that we only sum the salaries of those in the "Engineering" department. It is indented to be part of the loop, meaning it is executed for each employee in the list. It checks the condition for each employee and only adds their salary to the total if they meet the criteria.
+The `if` statement inside the loop allows us to filter the accounts. It checks the value associated with the `"category"` key for each account. If that value is `"Current Asset"`, we add the value from the `"balance"` key to our `total_current_assets` variable.

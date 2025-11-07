@@ -13,10 +13,10 @@ In programming, a data type is a classification that specifies which type of val
 Integers are whole numbers, both positive and negative, without any decimal points.
 
 ```python
-# An example of an integer
-my_integer = 10
-print(my_integer)
-print(type(my_integer))
+# An example of an integer (e.g., inventory on hand)
+inventory_count = 150
+print(inventory_count)
+print(type(inventory_count))
 ```
 
 ### 🌊 Floating-Point Numbers (`float`)
@@ -24,40 +24,22 @@ print(type(my_integer))
 Floats are numbers that have a decimal point. They are used for representing real numbers.
 
 ```python
-# An example of a float
-my_float = 3.14159
-print(my_float)
-print(type(my_float))
+# An example of a float (e.g., an asset's cost or a tax rate)
+asset_cost = 45000.75
+sales_tax_rate = 0.0825
+print(asset_cost)
+print(type(sales_tax_rate))
 ```
-
-:::{note} What are Complex Numbers?
-
-Python also supports complex numbers, which are used in advanced mathematical computations.
-
-Complex numbers are numbers that have both a real part and an imaginary part. They are often used in advanced mathematics, physics, and engineering. Python's built-in `complex` type allows you to work with complex numbers easily.
-
-For example, a complex number can be written as `3 + 4j`, where `3` is the real part and `4j` is the imaginary part. The `j` denotes the imaginary unit, which is the square root of -1.
-
-```python
-z = 3 + 4j      # complex number
-print(z)        # (3+4j)
-print(z.real)   # 3.0
-print(z.imag)   # 4.0
-```
-
-In this course, you will never encounter complex numbers.
-
-:::
 
 ### 🔤 Strings (`str`)
 
 Strings are sequences of characters, used for storing text. You can create them by enclosing characters in either single quotes (`'`) or double quotes (`"`).
 
 ```python
-# An example of a string
-my_string = "Hello, Python!"
-print(my_string)
-print(type(my_string))
+# An example of a string (e.g., an account name)
+account_name = "Accounts Receivable"
+print(account_name)
+print(type(account_name))
 ```
 
 ### ✅ Booleans (`bool`)
@@ -66,15 +48,11 @@ Booleans represent one of two values: `True` or `False`. They are crucial for de
 
 ```python
 # Examples of booleans
-is_learning = True
-is_difficult = False
-print(is_learning)
-print(type(is_difficult))
+is_current_asset = True
+audit_passed = False
+print(is_current_asset)
+print(type(audit_passed))
 ```
-
-:::{note} ⚡ Everything in Python is an Object
-In Python, even "primitive-looking" values like 5, 3.14, or "hello" are actually objects. So unlike in languages like C, Java, or JavaScript, Python doesn't have true primitives in the sense of raw, low-level values. Instead, everything is an instance of some class.
-:::
 
 ---
 
@@ -86,30 +64,30 @@ In simple terms, a variable is simply a nickname for a stored value that can _ch
 
 ### ❓ Why do we use variables?
 
-If you have a value that changes often and is used in many different parts of a program, maintaining your code can become difficult—you would need to manually update every instance of that value. Instead, by creating a variable and referencing it, you only need to update the variable once, and every reference will use the updated value.
+If you have a value that changes often and is used in many different parts of a program, maintaining your code can become difficult---you would need to manually update every instance of that value. Instead, by creating a variable and referencing it, you only need to update the variable once, and every reference will use the updated value.
 
-Variables also improve **readability** when used properly. For example, imagine you want to calculate the after-tax price (at a tax rate of 10%) of an item that costs 2 dollars. In Python, you could write this as `2 * 1.10`. While you might understand what the numbers mean, others may find it confusing. Rewriting it as `before_tax_price * (1 + tax_rate)` makes your code much clearer and easier to read.
+Variables also improve **readability** when used properly. For example, imagine you want to calculate the total amount due on an invoice of $1,000 with a 7% sales tax. In Python, you could write this as `1000 * 1.07`. While you might understand what the numbers mean, others may find it confusing. Rewriting it as `invoice_amount * (1 + sales_tax_rate)` makes your code much clearer and easier to read.
 
 ```python
 # Assigning values to variables
-name = "Alice"
-age = 30
-height_meters = 1.7
+asset_name = "Delivery Van"
+original_cost = 45000
+useful_life_years = 5
 
-print(name)
-print(age)
-print(height_meters)
+print(asset_name)
+print(original_cost)
+print(useful_life_years)
 ```
 
 You can change the value of a variable by reassigning it.
 
 ```python
 # Reassigning a variable
-current_year = 2023
-print("The current year is:", current_year)
+current_fiscal_year = 2024
+print("The current fiscal year is:", current_fiscal_year)
 
-current_year = 2024
-print("The new year is:", current_year)
+current_fiscal_year = 2025
+print("The new fiscal year is:", current_fiscal_year)
 ```
 
 ### 🆔 Variable Naming Rules
@@ -123,31 +101,36 @@ When naming variables in Python, you should follow these rules:
 
 ```python
 # Example of valid variable names
-first_name = "Alice"
-age = 30
-is_student = True
+customer_name = "Alpha Inc."
+cogs = 75000
+is_taxable = True
 
-# Example of invalid variable names (uncommenting these will cause errors)
-# 1st_name = "Alice"
-# age@ = 30
-# is student = True
+# Example of invalid variable names (running these will throw errors)
+1st_quarter_sales = 1000      # Invalid: starts with a number
+customer@name = "Alpha Inc."  # Invalid: contains special character
+is_ taxable = True            # Invalid: contains space
 ```
 
 **Recommendations for Naming Variables:**
 
-- Use descriptive names that convey the purpose of the variable (e.g., `age`, `total_price`, `is_valid`).
-- Use lowercase letters and separate words with underscores for better readability (e.g., `first_name`, `total_amount`).
+- Use descriptive names that convey the purpose of the variable (e.g., `net_income`, `total_assets`, `is_material`).
+
+- Use lowercase letters and separate words with underscores for better readability (e.g., `accounts_receivable`, `retained_earnings`).
 
 For best practices, follow the [PEP 8 style guide](https://peps.python.org/pep-0008/#naming-conventions) for naming conventions.
 
 :::{note} Why does Python use `snake_case` for variable names?
-Python uses `snake_case` (lowercase letters with underscores) for variable names to enhance readability. This convention makes it easier to distinguish between words in a variable name, especially when the name consists of multiple words. For example, `total_price` is more readable than `totalprice` or `TotalPrice`. This style is widely adopted in the Python community and is recommended in the PEP 8 style guide.
+
+Python uses `snake_case` (lowercase letters with underscores) for variable names to enhance readability. This convention makes it easier to distinguish between words in a variable name, especially when the name consists of multiple words. For example, `retained_earnings` is more readable than `retainedearnings` or `RetainedEarnings`. This style is widely adopted in the Python community and is recommended in the PEP 8 style guide.
+
 :::
 
 :::{warning} Variable Naming Do's and Don'ts
-👍 Use descriptive variable names and avoid single-letter names unless in a very limited scope. For example, use `user_age` instead of `my_variable15` to improve code clarity.
+
+👍 Use descriptive variable names and avoid single-letter names unless in a very limited scope. For example, use `accounts_payable_balance` instead of `ap_bal` or `x15` to improve code clarity.
 
 👎 Avoid using single-letter variable names (like `x`, `y`, `z`) unless they are used in a very limited scope (like in loops or mathematical formulas). Single-letter names do not convey any meaning about the variable's purpose, making the code harder to read and maintain. Instead, use descriptive names that clearly indicate what the variable represents.
+
 :::
 
 ---
@@ -161,8 +144,8 @@ Operators are special symbols that perform operations on variables and values.
 The assignment operator (`=`) is used to assign a value to a variable.
 
 ```python
-x = 5  # Assigns the value 5 to the variable x
-y = 10 # Assigns the value 10 to the variable y
+revenue = 50000  # Assigns the value 50000 to the variable revenue
+expenses = 35000 # Assigns the value 35000 to the variable expenses
 ```
 
 ### ➗ Arithmetic Operators
@@ -177,13 +160,16 @@ These are used to perform mathematical operations.
 - `%` : Modulus (Remainder)
 
 ```python
-a = 10
-b = 3
+revenue = 100000
+expenses = 75000
+principal = 1000
+rate = 0.05
+years = 3
 
-print("Addition:", a + b)
-print("Division:", a / b)
-print("Exponent:", a ** b)
-print("Remainder:", a % b)
+print("Net Income:", revenue - expenses)
+print("Gross Margin (as decimal):", (revenue - expenses) / revenue)
+print("Compound Interest (Future Value):", principal * (1 + rate) ** years)
+print("Remainder (less common in finance):", 10 % 3)
 ```
 
 ### ⚖️ Comparison Operators
@@ -198,12 +184,12 @@ These are used to compare two values and result in a boolean (`True` or `False`)
 - `<=`: Less than or equal to
 
 ```python
-x = 5
-y = 10
+current_assets = 50000
+current_liabilities = 30000
 
-print("Is x equal to y?", x == y)
-print("Is x less than y?", x < y)
-print("Is y not equal to 10?", y != 10)
+print("Is Current Ratio > 1.5?", (current_assets / current_liabilities) > 1.5)
+print("Are assets equal to liabilities?", current_assets == current_liabilities)
+print("Is the company liquid (CA > CL)?", current_assets > current_liabilities)
 ```
 
 ### 🔗 Logical Operators
@@ -215,16 +201,17 @@ These are used to combine conditional statements.
 - `not`: Reverses the result, returns `False` if the result is true
 
 ```python
-age = 25
-has_ticket = True
+revenue_criteria_met = True
+collection_probable = True
 
-# The person is old enough AND has a ticket
-can_enter = (age >= 18) and (has_ticket == True)
-print("Can enter the venue:", can_enter)
+# For revenue recognition (simplified)
+can_recognize_revenue = revenue_criteria_met and collection_probable
+print("Can recognize revenue:", can_recognize_revenue)
+# Output: Can recognize revenue: True
 
 # Using 'not' to reverse the boolean
-is_raining = False
-print("Is it not raining?", not is_raining)
+print(not revenue_criteria_met)
+# Output: False
 ```
 
 ---
@@ -240,16 +227,17 @@ The structure is as follows:
 - `else`: Optional. This block of code runs if none of the preceding `if` or `elif` conditions are met.
 
 ```python
-temperature = 22
+# Example: Assessing an audit misstatement
+misstatement_amount = 45000
+trivial_threshold = 5000
+materiality_threshold = 60000
 
-if temperature > 30:
-  print("It's a hot day! Stay hydrated.")
-elif temperature > 20:
-  print("The weather is nice and warm.")
-elif temperature > 10:
-  print("It's a bit chilly, consider a jacket.")
+if misstatement_amount > materiality_threshold:
+  print("Misstatement is material. Requires adjustment or modified opinion.")
+elif misstatement_amount > trivial_threshold:
+  print("Misstatement is not trivial. Aggregate with other misstatements.")
 else:
-  print("It's cold outside. Bundle up!")
+  print("Misstatement is trivial. No action needed.")
 ```
 
 :::{note} The `elif` and `else` blocks are optional
@@ -260,26 +248,26 @@ You can use just an `if` statement without `elif` or `else` if you only need to 
 
 ```python
 # The optional elif and else blocks are omitted
-if city == "Urbana":
-    print("Welcome to Urbana!")
+if account_balance < 0:
+    print("Warning: Account is overdrawn.")
 ```
 
 **🟢 Valid Example 2: Only `if` and `else` Statements**
 
 ```python
 # The optional elif block is omitted
-if chipotle.is_open():
-    print("Let's get some burritos!")
+if net_income > 0:
+    print("The company reported a profit.")
 else:
-    print("Chipotle is closed. Let's try somewhere else.")
+    print("The company reported a loss.")
 ```
 
 **🔴 Invalid Example: `elif` without `if`**
 
 ```python
-elif temperature > 20:
-    # This will raise a SyntaxError because elif must follow an if statement
-    print("The weather is nice and warm.")
+elif account_balance > 1000000:
+    # This will raise a SyntaxError because elif must follow an if statement
+    print("Account requires special monitoring.")
 ```
 
 :::
@@ -301,21 +289,21 @@ If indentation is inconsistent, Python will raise an `IndentationError`.
 ### 🧩 Example: Conditional Block
 
 ```python
-x = 10
+net_income = 150000
 
-if x > 5:
-    print("x is greater than 5")
-    print("This line is also inside the if-block")
+if net_income > 0:
+    print("The company is profitable.")
+    print("This is a positive sign for investors.")
 
-print("This line is outside the if-block")
+print("This line is outside the if-block and will always print.")
 ```
 
 Output:
 
 ```
-x is greater than 5
-This line is also inside the if-block
-This line is outside the if-block
+The company is profitable.
+This is a positive sign for investors.
+This line is outside the if-block and will always print.
 ```
 
 ### 👍 Common Practices

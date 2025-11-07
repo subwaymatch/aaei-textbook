@@ -2,6 +2,17 @@
 
 This is the **online textbook** for the AAEI Data Analytics Module, a course offered by the University of Illinois Urbana-Champaign. The course is designed to introduce students to the fundamentals of data analytics and its applications in accounting and business contexts.
 
+Data analytics enable accountants to derive insights from data, whether it is for financial analysis, auditing, or business decision-making. For example, audit data analytics can help auditors:
+
+- Understand the clients better,
+- Identify high-risk areas,
+- Increase efficiency,
+- Enhance audit quality,
+- Decrease the detection risk,
+- Provide more value-added services to clients.
+
+Although there is a wide array of topics, we will primarily focus on the basics of Python programming and data analytics using Pandas (a powerful data manipulation library in Python). This course is designed for beginners with no prior programming experience.
+
 ---
 
 ## 🎯 Learning Objectives
@@ -21,8 +32,8 @@ Upon completing this course, you should be able to…
 
 - Introduction to Python
 - Working with data using Pandas
-- Data visualization with Plotly
 - Exploratory data analysis
+- Data visualization with Plotly
 
 ---
 
