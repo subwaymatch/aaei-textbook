@@ -24,7 +24,6 @@ Upon completing this course, you should be able to…
 - Load and clean datasets
 - Transform data
 - Perform descriptive analytics
-- Present findings effectively
 
 ---
 
@@ -33,7 +32,6 @@ Upon completing this course, you should be able to…
 - Introduction to Python
 - Working with data using Pandas
 - Exploratory data analysis
-- Data visualization with Plotly
 
 ---
 

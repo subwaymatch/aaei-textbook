@@ -25,9 +25,9 @@ project:
     - file: content/pandas-datetime-aggregation-merges.ipynb
     - file: content/pandas-indexing-and-update-cells.ipynb
     - file: content/pandas-string-methods.ipynb
-    - title: Assignments
-      children:
-        - file: content/assignments/case-study-02-starbucks-app-customers.ipynb
+    # - title: Assignments
+    #   children:
+    #     - file: content/assignments/case-study-02-starbucks-app-customers.ipynb
   # title:
   # description:
   # keywords: []
@@ -40,5 +40,5 @@ site:
   options:
     # logo: site_images/site_logo.svg
     # logo_dark: site_images/site_logo.svg
-    favicon: site_images/favicon/favicon.ico
+    # favicon: site_images/favicon/favicon.ico
     style: media/custom.css
