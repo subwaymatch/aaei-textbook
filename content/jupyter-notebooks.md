@@ -23,11 +23,104 @@ The name "Jupyter" is a combination of "**Ju**lia", "**Py**thon", and "**R**", w
 
 ---
 
-## 💻 Installing and Running Jupyter Notebooks
+## 💻 Running Jupyter Notebooks using Google Colab
 
-There are multiple ways to run Jupyter Notebooks:
+There are multiple ways to run Jupyter Notebooks. For this course, we recommend using Google Colab, which is a free cloud-based service that allows you to run Jupyter Notebooks without any local installation. You can access it at [colab.research.google.com](https://colab.research.google.com/). It provides free access to GPUs and TPUs, making it suitable for machine learning tasks.
 
-1. **JupyterLab Desktop App (recommended for this module)**: JupyterLab is the next-generation user interface for Jupyter Notebooks. It provides a more flexible and powerful environment for working with notebooks, code, and data. You can download the JupyterLab desktop app from [here](https://github.com/jupyterlab/jupyterlab-desktop/releases).
+:::{warning} Use Google Colab for This Course!
+Unless you're already familiar with Jupyter Notebook environments, we strongly recommend using **Google Colab** for this course. It simplifies the setup process and allows you to focus on learning Python and data analytics without worrying about local installations and configurations.
+:::
+
+Follow these steps to get started with Google Colab:
+
+First, go to [colab.research.google.com](https://colab.research.google.com/). If you're not signed in, you'll see a screen like this: Click on the "Sign In" button at the top right corner.
+
+```{image} images/colab/click-on-sign-in-button.png
+:alt: Click on the Sign In Button
+:align: center
+```
+
+Once you're signed in, go back to the Colab homepage at [colab.research.google.com](https://colab.research.google.com/). Click on the "New Notebook" button.
+
+```{image} images/colab/click-on-new-notebook.png
+:alt: Click on the New Notebook Button
+:align: center
+```
+
+This will create a new Jupyter Notebook in Google Colab with a blank code cell ready for you to start coding.
+
+```{image} images/colab/new-notebook-screen.png
+:alt: New Notebook Screen
+:align: center
+```
+
+Let's test it out by running a simple block of code. Copy the following code into the code cell and click on the "Run" button (the play icon) or press `Shift + Enter` on your keyboard.
+
+```python
+import pandas as pd
+
+my_series = pd.Series([10, 20, 30, 40])
+print(my_series)
+```
+
+```{image} images/colab/run-code-cell.png
+:alt: Run Code Cell
+:align: center
+```
+
+You can also add a "Text Cell" to include explanations or notes. Move your cursor to the area below your code cell. This will display the buttons to add a new cell. Click on the "+ Text" button to add a new text cell.
+
+```{image} images/colab/hover-to-add-new-cell.png
+:alt: Hover to Add New Cell
+:align: center
+```
+
+The "Text Cell" uses Markdown syntax, which allows you to format your text. You can write headings, lists, links, and more. Although we won't cover Markdown in detail here, you can refer to the [Markdown Guide](https://www.markdownguide.org/basic-syntax/) for more information.
+
+```{image} images/colab/text-cell-example.png
+:alt: Text Cell Example
+:align: center
+```
+
+Note that you can add more code cells and text cells as needed by using the "+ Code" and "+ Text" buttons. Let's add another code cell below the text cell by clicking on the "+ Code" button. The Jupyter Notebook environment has a "memory" that retains the state of your variables and imports across different code cells. For example, you can reuse the `my_series` variable defined in the first code cell in this new code cell. Copy the following code into the new code cell and run it.
+
+```python
+# multiply each element and print the result
+print(my_series * 2)
+```
+
+```{image} images/colab/add-another-code-cell.png
+:alt: Add Another Code Cell
+:align: center
+```
+
+This will output:
+
+```plaintext
+0    20
+1    40
+2    60
+3    80
+dtype: int64
+```
+
+We won't worry about the details of these code blocks just yet. Finally, you can run all the code cells in your notebook by using the "Run All" button.
+
+```{image} images/colab/run-all-button.png
+:alt: Run All Button
+:align: center
+```
+
+For now, that's a brief introduction to using Jupyter Notebooks with Google Colab.
+
+---
+
+### 📦 Other Installation Options for Running Jupyter Notebooks
+
+If you prefer to run Jupyter Notebooks locally on your machine, here are some options:
+
+1. **JupyterLab Desktop App**: JupyterLab is the next-generation user interface for Jupyter Notebooks. It provides a more flexible and powerful environment for working with notebooks, code, and data. You can download the JupyterLab desktop app from [here](https://github.com/jupyterlab/jupyterlab-desktop/releases).
+
 2. **Anaconda Distribution (Local Installation via Anaconda)**: Anaconda is a popular distribution of Python and R for scientific computing and data science. It comes with Jupyter Notebooks pre-installed. You can download Anaconda from [here](https://www.anaconda.com/products/distribution).
 
 3. **JupyterLab (Local Installation via `pip`)**: JupyterLab is the next-generation user interface for Jupyter Notebooks. It provides a more flexible and powerful environment for working with notebooks, code, and data. You can install it using pip:
@@ -43,7 +136,6 @@ There are multiple ways to run Jupyter Notebooks:
    ```
 
 4. **Visual Studio Code (VS Code)**: VS Code is a popular code editor that supports Jupyter Notebooks through an extension. You can install the "Jupyter" extension from the VS Code marketplace. More information can be found [here](https://code.visualstudio.com/docs/datascience/jupyter-notebooks).
-5. **Google Colab**: Google Colab is a free cloud-based service that allows you to run Jupyter Notebooks without any local installation. You can access it at [colab.research.google.com](https://colab.research.google.com/). It provides free access to GPUs and TPUs, making it suitable for machine learning tasks.
 
 ---
 
